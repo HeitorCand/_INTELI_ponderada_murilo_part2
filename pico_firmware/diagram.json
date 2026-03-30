@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": 80,
+      "left": 160,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 20,
+      "left": 420,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 240,
+      "left": 440,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    ["pico:GP0", "$serialMonitor:RX", "", []],
+    ["pico:GP1", "$serialMonitor:TX", "", []],
+
+    ["pico:ADC0", "pot1:SIG", "green",  []],
+    ["pico:3V3",  "pot1:VCC", "red",    []],
+    ["pico:GND.1","pot1:GND", "black",  []],
+
+    ["pico:GP15", "btn1:1.l", "yellow", []],
+    ["btn1:2.l",  "pico:GND.2","black", []]
+  ],
+  "dependencies": {}
+}
